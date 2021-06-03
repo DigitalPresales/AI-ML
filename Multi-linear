@@ -1,0 +1,35 @@
+## Loyalty Management Program ####################
+
+# customer who has good repeat purchase rate (50-70) and redemptiom rate (30-40)
+# customer who has low repeat rate (20-30) but high redemption rate (>50)
+# high repeat rate (>60) but low redemption rate (2-12)
+# Customer low repeat rate (<20) but very high redemption rate (>55)
+# Mixed of all 
+import pandas as pd
+import numpy as np
+import seaborn as sns
+from sklearn.cluster import KMeans
+
+data = pd.read_csv(r'File Path of CustomerSegmentation.csv', index_col="id")
+data.head()
+
+##--- Hit enter here , you will see some output 
+## Add new row and paste below code 
+
+kmeans = KMeans(n_clusters=4)
+kmeans.fit(data)
+kmeans.labels_
+
+##--- Hit enter here , you will see some output 
+## Add new row and paste below code 
+unique, counts = np.unique(kmeans.labels_, return_counts=True)
+dict_data = dict(zip(unique, counts))
+dict_data
+##--- Hit enter here , you will see some output 
+## Add new row and paste below code 
+
+data["cluster"] = kmeans.labels_
+sns.lmplot('Avg Repeat Purchase Rate', 'Loyalty Redemption Rate', data=data, hue='cluster', 
+           palette='coolwarm', size=6, aspect=1, fit_reg=False)
+           
+## You will now see the graph
