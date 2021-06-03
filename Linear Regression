@@ -19,7 +19,8 @@ y_pred = regressor.predict(X_test)
 df = pd.DataFrame({'here are our Real Values':y_test, 'these are our Predicted Values':y_pred})
 df 
 
-## 
+##--- Hit enter here , you will see some output 
+## Add new row and paste below code 
 
 
 plt.scatter(X_test, y_test, color = 'red')
@@ -29,3 +30,4 @@ plt.title('Clickstream Vs Customer Lifetime Value (Result)')
 plt.xlabel('Clickstream data in thousands')
 plt.ylabel('Customer Lifetime value')
 plt.show()
+##--- Hit enter here , you will see some output 
